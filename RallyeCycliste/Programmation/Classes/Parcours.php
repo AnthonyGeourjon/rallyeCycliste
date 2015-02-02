@@ -1,7 +1,7 @@
 <?php
-class Inscription extends TableObject {
+class Parcours extends TableObject {
 
-    // Affichage simplifié d'une inscription pour debug
+    // Redéfinition pour affichage simplifié 
     public function __tostring() {
          // TODO : À COMPLÉTER
     }

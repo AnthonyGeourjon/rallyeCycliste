@@ -1,7 +1,7 @@
 <?php
-class Inscription extends TableObject {
+class Utilisateur extends TableObject {
 
-    // Affichage simplifié d'une inscription pour debug
+    // Redéfinition de __tostring pour affichage simplifié 
     public function __tostring() {
          // TODO : À COMPLÉTER
     }

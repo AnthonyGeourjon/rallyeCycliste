@@ -1,19 +1,19 @@
 <?php
-// Classe pour l'accès à la table INSCRIPTION
+// Classe pour l'accès à la table UTILISATEUR
 // Exemple disponible dans nos TPs
-class InscriptionDAO extends DAO {
+class UtilisateurDAO extends DAO {
 	
-	// Récupération d'une commande dont on donne le numéro
+	// Récupération d'un utilisateur dont on donne le numéro
 	public function getOne($num) {
 		// TODO : À COMPLÉTER
 	}
 	
-	// Récupération de toutes les inscriptions de la table
+	// Récupération de toutes les utilisateurs de la table
 	public function getAll() {
 		 // TODO : À COMPLÉTER
 	}
 	
-	// Ajout d'une inscription dans la base
+	// Ajout d'un utilisateur dans la base
 	public function insert($obj) {
 		 // TODO : À COMPLÉTER
 	}
@@ -23,13 +23,9 @@ class InscriptionDAO extends DAO {
 		 // TODO : À COMPLÉTER
 	}
 	
-	// Effacement d'une commande : effacer d'abord les lignes de commande, puis la commande elle-mÃªme
+	// Effacement d'un utilisateur
 	public function delete($obj) {
 		 // TODO : À COMPLÉTER
-	}
-	
-	public function deleteAll() {
-		// TODO : À COMPLÉTER
 	}
 }
 ?>

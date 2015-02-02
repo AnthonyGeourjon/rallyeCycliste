@@ -1,19 +1,19 @@
 <?php
-// Classe pour l'accès à la table INSCRIPTION
+// Classe pour l'accès à la table PARCOURS
 // Exemple disponible dans nos TPs
-class InscriptionDAO extends DAO {
-	
-	// Récupération d'une commande dont on donne le numéro
+class ParcoursDAO extends DAO {
+
+	// Récupération du parcours $num
 	public function getOne($num) {
 		// TODO : À COMPLÉTER
 	}
 	
-	// Récupération de toutes les inscriptions de la table
+	// Récupération des parcours de la table
 	public function getAll() {
 		 // TODO : À COMPLÉTER
 	}
 	
-	// Ajout d'une inscription dans la base
+	// Ajout d'un pacours dans la base
 	public function insert($obj) {
 		 // TODO : À COMPLÉTER
 	}
@@ -23,11 +23,12 @@ class InscriptionDAO extends DAO {
 		 // TODO : À COMPLÉTER
 	}
 	
-	// Effacement d'une commande : effacer d'abord les lignes de commande, puis la commande elle-mÃªme
+	// Effacement d'un parcours
 	public function delete($obj) {
 		 // TODO : À COMPLÉTER
 	}
 	
+	// Effacement de l'intégralité des parcours
 	public function deleteAll() {
 		// TODO : À COMPLÉTER
 	}
