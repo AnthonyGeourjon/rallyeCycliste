@@ -1,12 +1,12 @@
-/* --- SCRIPT CRÉATION DES TABLES DU PROJET 2E ANNÉE ---
+/* --- SCRIPT CRÃ‰ATION DES TABLES DU PROJET 2E ANNÃ‰E ---
    - Auteur : Anthony Geourjon
    - Date : 02/02/2015
-   - Avancement : Terminé
+   - Avancement : TerminÃ©
 
 /* 
 
-- Le champ "posteDInscription" correspond à l'identifiant du poste d'inscription ou à NULL si il s'agit d'une préinscription
-- Le champ "idinscriveur" fait réference à l'utilisateur qui a enregistré cette inscription (bénévole ou randonneur web) 
+- Le champ "posteDInscription" correspond Ã  l'identifiant du poste d'inscription ou Ã  NULL si il s'agit d'une prÃ©inscription
+- Le champ "idinscriveur" fait rÃ©ference Ã  l'utilisateur qui a enregistrÃ© cette inscription (bÃ©nÃ©vole ou randonneur web) 
 
 */
 
@@ -14,13 +14,14 @@ DROP TABLE IF EXISTS UTILISATEUR ;
 CREATE TABLE UTILISATEUR (
 idUtilisateur INT AUTO_INCREMENT NOT NULL,
 login VARCHAR(30) UNIQUE,
-motDePasse VARCHAR(30),
+motDePasse VARCHAR(20),
+mail VARCHAR (50),
 PRIMARY KEY (idUtilisateur) 
 ) ENGINE=InnoDB;
 
 /* 
 
-- Les comptes admin et bénevole seront différenciés des autres utilisateurs par leurs logins "admin", "benevole". 
+- Les comptes admin et bÃ©nevole seront diffÃ©renciÃ©s des autres utilisateurs par leurs logins "admin", "benevole". 
 
 */
 
@@ -33,11 +34,11 @@ PRIMARY KEY (idParcours) ) ENGINE=InnoDB;
 
 /* 
 
-- La base ne teste pas la cohérence des parcours saisies, on le fera dans le code PHP.
+- La base ne teste pas la cohÃ©rence des parcours saisies, on le fera dans le code PHP.
 
 */
 
-/* Dénormalisation du schéma entité association afin de créer moins de table et de pouvoir ainsi réduire le nombre de jointure*/
+/* DÃ©normalisation du schÃ©ma entitÃ© association afin de crÃ©er moins de table et de pouvoir ainsi rÃ©duire le nombre de jointure*/
 
 DROP TABLE IF EXISTS INSCRIPTION ;
 CREATE TABLE INSCRIPTION (
