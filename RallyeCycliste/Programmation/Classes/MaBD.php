@@ -12,8 +12,8 @@ class MaBD {
       if (self::$pdo == null) {
          $dsn = "mysql:host=localhost;dbname=geourjoa;charset=utf8";
          self::$pdo = new PDO($dsn, "root", "");
-      	 /*$dsn = "mysql:host=gigondas;dbname=geourjoa;charset=utf8";
-      	 self::$pdo = new PDO($dsn, "geourjoa", "geourjoa");*/
+      	 /*$dsn = "mysql:host=gigondas;dbname=rallye;charset=utf8";
+      	 self::$pdo = new PDO($dsn, "rallye", "rallye");*/
       }
       return self::$pdo;
    }
