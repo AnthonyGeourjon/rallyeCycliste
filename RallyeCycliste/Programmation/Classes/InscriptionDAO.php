@@ -24,12 +24,28 @@ class InscriptionDAO extends DAO {
 	
 	// Ajout d'une inscription dans la base
 	public function insert($obj) {
-		// TODO : À COMPLÉTER
+		$stmt = $this->pdo->prepare ( "INSERT INTO INSCRIPTION (nomRandonneur, prenomRandonneur, sexe, dateNaissance, age, federation, clubOuVille, departement, posteDInscription, idParcours, idInscriveur) VALUES (:nomRandonneur, :prenomRandonneur, :sexe, :dateNaissance, :age, :federation, :clubOuVille, :departement, :posteDInscription, :idParcours, :idInscriveur)
+				" );
+		// $res = $stmt->execute($obj->getFields());
+		$res = $stmt->execute ( array (
+				':nomRandonneur' => $obj->getFields ()['nomRandonneur'],
+				':prenomRandonneur' => $obj->getFields ()['prenomRandonneur'],
+				':sexe' => $obj->getFields ()['sexe'],
+				':dateNaissance' => $obj->getFields ()['dateNaissance'],
+				':age' => $age, /* TODO A calculer */
+				':federation' => $obj->getFields ()['federation'],
+				':clubOuVille' => $obj->getFields ()['clubOuVille'],
+				':departement' => $obj->getFields ()['departement'],
+				':posteDInscription' => $obj->getFields ()['posteDInscription'],
+				':idParcours' => $obj->getFields ()['idParcours'],
+				':idInscriveur' => $obj->getFields ()['idInscriveur']
+		) );
+		return $res;		
 	}
 	
 	// Mise à jour de l'objet dans la base
 	public function update($obj) {
-		// TODO : À COMPLÉTER
+		throw new Exception("Update non défini, remplacé par delete/insert");
 	}
 	
 	// Effacement d'une commande : effacer d'abord les lignes de commande, puis la commande elle-mÃªme
