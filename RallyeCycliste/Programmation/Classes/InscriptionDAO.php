@@ -26,7 +26,7 @@ class InscriptionDAO extends DAO {
 	public function insert($obj) {
 		$stmt = $this->pdo->prepare ( "INSERT INTO INSCRIPTION (nomRandonneur, prenomRandonneur, sexe, dateNaissance, age, federation, clubOuVille, departement, posteDInscription, idParcours, idInscriveur) VALUES (:nomRandonneur, :prenomRandonneur, :sexe, :dateNaissance, :age, :federation, :clubOuVille, :departement, :posteDInscription, :idParcours, :idInscriveur)
 				" );
-		// $res = $stmt->execute($obj->getFields());
+		// $res = $stmt->execute($obj->getFields()); TODO Tester si cela focntionne
 		$res = $stmt->execute ( array (
 				':nomRandonneur' => $obj->getFields ()['nomRandonneur'],
 				':prenomRandonneur' => $obj->getFields ()['prenomRandonneur'],

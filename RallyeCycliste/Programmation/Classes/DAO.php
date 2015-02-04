@@ -31,5 +31,8 @@ abstract class DAO {
 
     // Effacement de l'objet $obj (DELETE)
     abstract public function delete($obj);
+    
+    // Effacement de toute les lignes de la tables
+    abstract public function deleteAll();
 }
 ?>
