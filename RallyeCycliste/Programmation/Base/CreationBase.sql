@@ -3,14 +3,8 @@
    - Date : 02/02/2015
    - Avancement : Terminé
 
-/* 
-
-- Le champ "posteDInscription" correspond à l'identifiant du poste d'inscription ou à NULL si il s'agit d'une préinscription
-- Le champ "idinscriveur" fait réference à l'utilisateur qui a enregistré cette inscription (bénévole ou randonneur web) 
-
 */
 
-DROP TABLE IF EXISTS UTILISATEUR ;
 CREATE TABLE UTILISATEUR (
 idUtilisateur INT AUTO_INCREMENT NOT NULL,
 mail VARCHAR (50),
@@ -24,9 +18,8 @@ PRIMARY KEY (idUtilisateur)
 
 */
 
-DROP TABLE IF EXISTS PARCOURS ;
 CREATE TABLE PARCOURS (
-idParcours INT  AUTO_INCREMENT NOT NULL,
+idParcours INT AUTO_INCREMENT NOT NULL,
 distance INT,
 type VARCHAR(5),
 PRIMARY KEY (idParcours) ) ENGINE=InnoDB;
@@ -39,9 +32,8 @@ PRIMARY KEY (idParcours) ) ENGINE=InnoDB;
 
 /* Dénormalisation du schéma entité association afin de créer moins de table et de pouvoir ainsi réduire le nombre de jointure*/
 
-DROP TABLE IF EXISTS INSCRIPTION ;
-CREATE TABLE INSCRIPTION (
 
+CREATE TABLE INSCRIPTION (
 idInscription INT AUTO_INCREMENT NOT NULL,
 nomRandonneur VARCHAR(30),
 prenomRandonneur VARCHAR(30),
@@ -58,3 +50,10 @@ PRIMARY KEY (idInscription),
 FOREIGN KEY (idParcours) REFERENCES PARCOURS(idParcours),
 FOREIGN KEY (idInscriveur) REFERENCES UTILISATEUR(idUtilisateur)
 ) ENGINE=InnoDB;
+
+/* 
+
+- Le champ "posteDInscription" correspond à l'identifiant du poste d'inscription ou à NULL si il s'agit d'une préinscription
+- Le champ "idinscriveur" fait réference à l'utilisateur qui a enregistré cette inscription (bénévole ou randonneur web) 
+
+*/
