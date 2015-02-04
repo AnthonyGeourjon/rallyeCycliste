@@ -45,7 +45,8 @@ class InscriptionDAO extends DAO {
 	
 	// Mise à jour de l'objet dans la base
 	public function update($obj) {
-		throw new Exception("Update non défini, remplacé par delete/insert");
+		$this->delete($obj);
+		$this->insert($obj);
 	}
 	
 	// Effacement d'une commande : effacer d'abord les lignes de commande, puis la commande elle-mÃªme

@@ -35,7 +35,8 @@ class UtilisateurDAO extends DAO {
 	
 	// Mise à jour de l'objet dans la base
 	public function update($obj) {
-		throw new Exception ( "Update non défini, remplacé par delete/insert" );
+		$this->delete($obj);
+		$this->insert($obj);
 	}
 	
 	// Effacement d'un utilisateur
