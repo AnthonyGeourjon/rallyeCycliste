@@ -28,13 +28,12 @@ echo "------- Nouvel utilisateur : ------- ";
 sl();
 $nouveau = new Utilisateur(array('idUtilisateur' => DAO::UNKNOWN_ID, 'mail' => "anthony.geourjon@iut-valence.fr", 'motDePasse' => "toto"));
 
-
 echo  $nouveau;
 sl();
 
 echo "------- Enregistrement ------";
 sl();
-$commandes->insert($nouveau);
+$utilisateurs->insert($nouveau);
 
 echo $utilisateurs->getOne(MaBD::getInstance()->lastInsertId() );
 
