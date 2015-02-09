@@ -28,7 +28,7 @@ class ParcoursDAO extends DAO
     // Ajout d'un pacours dans la base
     public function insert ($obj)
     {
-        $stmt = $this->pdo->prepare("INSERT INTO PARCOURS (distance, type) VALUES (:distance, :type");
+        $stmt = $this->pdo->prepare("INSERT INTO PARCOURS (distance, type) VALUES (:distance, :type)");
         // $res = $stmt->execute($obj->getFields()); TODO Tester si cela
         // focntionne
         $res = $stmt->execute(array(

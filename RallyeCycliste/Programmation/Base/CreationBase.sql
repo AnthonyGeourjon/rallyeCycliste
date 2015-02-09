@@ -6,7 +6,7 @@
 */
 
 CREATE TABLE UTILISATEUR (
-idUtilisateur INT AUTO_INCREMENT NOT NULL,
+idUtilisateur SERIAL,
 mail VARCHAR (50),
 motDePasse VARCHAR(20),
 PRIMARY KEY (idUtilisateur) 
@@ -19,7 +19,7 @@ PRIMARY KEY (idUtilisateur)
 */
 
 CREATE TABLE PARCOURS (
-idParcours INT AUTO_INCREMENT NOT NULL,
+idParcours SERIAL,
 distance INT,
 type VARCHAR(5),
 PRIMARY KEY (idParcours) ) ENGINE=InnoDB;
@@ -34,10 +34,10 @@ PRIMARY KEY (idParcours) ) ENGINE=InnoDB;
 
 
 CREATE TABLE INSCRIPTION (
-idInscription INT AUTO_INCREMENT NOT NULL,
+idInscription SERIAL,
 nomRandonneur VARCHAR(30),
 prenomRandonneur VARCHAR(30),
-sexe VARCHAR(1),
+sexe CHAR(1),
 dateNaissance DATE,
 age INT,
 federation VARCHAR (6),

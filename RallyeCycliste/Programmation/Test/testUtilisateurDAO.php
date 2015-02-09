@@ -16,7 +16,7 @@ function afficheTout ($utilisateurs)
     echo "------- Tous les utilisateurs : ------";
     sl();
     foreach ($utilisateurs->getAll() as $utilisateur) {
-        echo $utilisateur;
+        echo "Utilisateur numero : $utilisateur->idUtilisateur, mail : $utilisateur->mail";
         sl();
     }
 }
@@ -34,8 +34,8 @@ sl();
 echo "------- Enregistrement ------";
 sl();
 $utilisateurs->insert($nouveau);
-
-echo $utilisateurs->getOne(MaBD::getInstance()->lastInsertId() );
+//echo $utilisateurs->getOne(MaBD::getInstance()->lastInsertId() );
+echo "Utilisateur enregistre.";
 
 sl();
 
@@ -46,13 +46,17 @@ sl();
 $nouveauModifie=$utilisateurs->getOne(MaBD::getInstance()->lastInsertId());
 $nouveauModifie->mail="anthony.geourjon@hotmail.fr";
 
-$commandes->update($nouveauModifie);
+var_dump($nouveauModifie);
+
+$utilisateurs->update($nouveauModifie);
 
 echo $nouveauModifie;
 
+afficheTout($utilisateurs);
+
 echo "------- Effacement de $nouveauModifie->idUtilisateur \n";
 echo "</br>";
-$commandes->delete($nouveauModifie);
+$utilisateurs->delete($nouveauModifie);
 
-afficheTout($commandes);
+afficheTout($utilisateurs);
 ?>

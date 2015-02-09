@@ -18,13 +18,13 @@ class UtilisateurDAO extends DAO {
 		$res = array ();
 		$stmt = $this->pdo->query ( "SELECT * FROM UTILISATEUR ORDER BY idUtilisateur" );
 		foreach ( $stmt->fetchAll ( PDO::FETCH_ASSOC ) as $row )
-			$res [] = new Parcours ( $row );
+			$res [] = new Utilisateur ( $row );
 		return $res;
 	}
 	
 	// Ajout d'un utilisateur dans la base
 	public function insert($obj) {
-		$stmt = $this->pdo->prepare ( "INSERT INTO UTILISATEUR (mail, motDePasse) VALUES (:mail, :motDePasse" );
+		$stmt = $this->pdo->prepare ( "INSERT INTO UTILISATEUR (mail, motDePasse) VALUES (:mail, :motDePasse)" );
 		// $res = $stmt->execute($obj->getFields()); TODO Tester si cela focntionne
 		$res = $stmt->execute ( array (
 				':mail' => $obj->getFields ()['mail'],
@@ -35,14 +35,16 @@ class UtilisateurDAO extends DAO {
 	
 	// Mise à jour de l'objet dans la base
 	public function update($obj) {
-		$this->delete($obj);
-		$this->insert($obj);
+	    $stmt = $this->pdo->prepare("UPDATE UTILISATEUR SET mail=:mail, motDePasse=:motDePasse WHERE idUtilisateur=:idUtilisateur");
+	    //$res = $stmt->execute($obj->getFields());
+	    $res = $stmt->execute(array(':idUtilisateur' => $obj->getFields()['idUtilisateur'],':mail' => $obj->getFields()['mail'], ':motDePasse' => $obj->getFields()['motDePasse']));
+	    return $res;
 	}
 	
 	// Effacement d'un utilisateur
 	public function delete($obj) {
 		$stmt = $this->pdo->prepare("DELETE FROM UTILISATEUR WHERE idUtilisateur=?");
-		$res = $stmt->execute(array($obj->idParcours));
+		$res = $stmt->execute(array($obj->idUtilisateur));
 		return $res;
 	}
 	
