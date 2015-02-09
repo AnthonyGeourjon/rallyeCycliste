@@ -39,7 +39,7 @@ echo "Utilisateur enregistre.";
 
 sl();
 
-echo "------- Modification de l'utilisateur numéo : ", MaBD::getInstance()->lastInsertId(), " ----";
+echo "------- Modification de l'utilisateur numéro : ", MaBD::getInstance()->lastInsertId(), " ----";
 
 sl();
 
