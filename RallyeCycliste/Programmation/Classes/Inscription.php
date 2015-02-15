@@ -1,13 +1,12 @@
 <?php
 class Inscription extends TableObject {
-
-    // Affichage simplifié d'une inscription pour debug
-    public function __tostring() {
-         // TODO : À COMPLÉTER
-    }
-
-    public function toHTML() {
-    	// TODO : À COMPLÉTER
-    }
+	
+	// Affichage simplifié d'une inscription pour debug
+	public function __tostring() {
+		return "Inscription numero : $this->idInscription, parcours : $this->idParcours, Inscriveur : $this->idUtilisateur";
+	}
+	public function toHTML() {
+		// TODO : À COMPLÉTER
+	}
 }
 ?>
