@@ -5,8 +5,12 @@
 
 */
 
+DROP TABLE IF EXISTS INSCRIPTION ;
+DROP TABLE IF EXISTS UTILISATEUR ;
+DROP TABLE IF EXISTS PARCOURS ;
+
 CREATE TABLE UTILISATEUR (
-idUtilisateur SERIAL,
+idUtilisateur int(11) NOT NULL AUTO_INCREMENT,
 mail VARCHAR (50),
 motDePasse VARCHAR(20),
 PRIMARY KEY (idUtilisateur) 
@@ -19,7 +23,7 @@ PRIMARY KEY (idUtilisateur)
 */
 
 CREATE TABLE PARCOURS (
-idParcours SERIAL,
+idParcours int(11) NOT NULL AUTO_INCREMENT,
 distance INT,
 type VARCHAR(5),
 PRIMARY KEY (idParcours) ) ENGINE=InnoDB;
@@ -34,7 +38,7 @@ PRIMARY KEY (idParcours) ) ENGINE=InnoDB;
 
 
 CREATE TABLE INSCRIPTION (
-idInscription SERIAL,
+idInscription int(11) NOT NULL AUTO_INCREMENT,
 nomRandonneur VARCHAR(30),
 prenomRandonneur VARCHAR(30),
 sexe CHAR(1),
@@ -44,11 +48,9 @@ federation VARCHAR (6),
 clubOuVille VARCHAR (40),
 departement INT,
 posteDInscription INT,
-idParcours INT,
-idInscriveur INT,
-PRIMARY KEY (idInscription), 
-FOREIGN KEY (idParcours) REFERENCES PARCOURS(idParcours),
-FOREIGN KEY (idInscriveur) REFERENCES UTILISATEUR(idUtilisateur)
+idParcours int(11) NOT NULL,
+idUtilisateur int(11) NOT NULL,
+PRIMARY KEY (idInscription)
 ) ENGINE=InnoDB;
 
 /* 
@@ -57,3 +59,7 @@ FOREIGN KEY (idInscriveur) REFERENCES UTILISATEUR(idUtilisateur)
 - Le champ "idinscriveur" fait réference à l'utilisateur qui a enregistré cette inscription (bénévole ou randonneur web) 
 
 */
+
+ALTER TABLE INSCRIPTION
+  ADD CONSTRAINT inscription_1 FOREIGN KEY (idParcours) REFERENCES PARCOURS (idParcours),
+  ADD CONSTRAINT inscription_2 FOREIGN KEY (idUtilisateur) REFERENCES UTILISATEUR (idUtilisateur);
