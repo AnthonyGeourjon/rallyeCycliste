@@ -16,7 +16,6 @@ function afficheTout ($parcours)
     echo "------- Tous les parcours: ------";
     sl();
     foreach ($parcours->getAll() as $parcoursCourant) {
-        var_dump($parcoursCourant);
         echo "Parcours numero : $parcoursCourant->idParcours, distance : $parcoursCourant->distance, type : $parcoursCourant->type"; 
         sl();
     }
@@ -25,11 +24,12 @@ function afficheTout ($parcours)
 $parcours = new ParcoursDAO(MaBD::getInstance());
 afficheTout($parcours);
 
-echo "------- Nouvel parcours : ------- ";
+echo "------- Nouveau parcours : ------- ";
 sl();
 $nouveau = new Parcours(array('idParcours' => DAO::UNKNOWN_ID, 'distance' => 40, 'type' => "V"));
 
-var_dump($nouveau);
+echo "Nouveau : $nouveau";
+
 sl();
 
 echo "------- Enregistrement ------";
@@ -46,8 +46,6 @@ sl();
 
 $nouveauModifie=$parcours->getOne(MaBD::getInstance()->lastInsertId());
 $nouveauModifie->distance=50;
-
-var_dump($nouveauModifie);
 
 $parcours->update($nouveauModifie);
 

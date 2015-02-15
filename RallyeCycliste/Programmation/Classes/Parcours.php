@@ -3,7 +3,7 @@ class Parcours extends TableObject {
 
     // Redéfinition pour affichage simplifié 
     public function __tostring() {
-         // TODO : À COMPLÉTER
+         return "$this->idParcours, distance $this->distance, type $this->type";
     }
 
     public function toHTML() {
