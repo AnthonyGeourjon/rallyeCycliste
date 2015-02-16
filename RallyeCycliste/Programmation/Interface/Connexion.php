@@ -1,7 +1,7 @@
 <?php
 session_start ();
 
-require_once "verifConnexion.php";
+require_once "VerifConnexion.php";
 
 // Autochargement des classes
 function __autoload($class) {
@@ -28,7 +28,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>', "\n";
             <?php
 												
 												echo "
-                    <form method='post' action='connexion.php'>
+                    <form method='post' action='Connexion.php'>
                         <p><label>Saisissez votre login: </label><input type='text' name='mail'  /></p>
                         <p><label>Saisissez votre mot de passe: </label><input type='password' name='motDePasse' /></p>
                         <p><input type='submit' value='Valider'/></p> 

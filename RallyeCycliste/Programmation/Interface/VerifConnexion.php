@@ -10,21 +10,19 @@ $resultatConnexion = "Echec";
 
 // Vérification login/mdp
 function verifConnexion() {
-	global $utilisateurs, $resultatConnexion;;
+	global $utilisateurs, $resultatConnexion;
+	;
 	if (isset ( $_POST ["mail"] ) && (isset ( $_POST ["motDePasse"] ))) {
 		try {
-			$utilisateurCourant = $utilisateurs->getOneByMail( $_POST ['mail'] );
-			
-		
+			$utilisateurCourant = $utilisateurs->getOneByMail ( $_POST ['mail'] );
 			
 			// Soulève l'exception si l'utilisateur n'existe pas
 			if (isset ( $utilisateurCourant ) && $_POST ['motDePasse'] == $utilisateurCourant->motDePasse) {
 				$_SESSION ['utilisateur'] = $utilisateurCourant;
 				
-				$resultatConnexion="Succès";
+				$resultatConnexion = "Succès";
 				
-				//header ( "Location: pageADefinir.php" ); TODO
-				
+				header ( "Location: menu.php" );
 			} 
 
 			else {
@@ -33,6 +31,11 @@ function verifConnexion() {
 		} catch ( Exception $e ) {
 			echo "Utilisateur inconnu "; // Changer message pour la sécurité (on sait que l'utilisateur n'est pas dans ce cas
 		}
+	}
+}
+function verifPage() {
+	if (! isset ( $_SESSION ['utilisateur'] )) {
+		header ( "Location: Connexion.php" );
 	}
 }
 
