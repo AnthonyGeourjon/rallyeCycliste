@@ -18,13 +18,13 @@ if (isset ( $_POST ['inscription'] )) {
 if (isset ( $_POST ['preInscription'] )) {
 	header ( "Location: PreInscription.php" );
 }
-if (isset ( $_POST ['Validation'] )) {
+if (isset ( $_POST ['validation'] )) {
 	header ( "Location: Validation.php" );
 }
-if (isset ( $_POST ['Statistique'] )) {
+if (isset ( $_POST ['statistique'] )) {
 	header ( "Location: Statistique.php" );
 }
-if (isset ( $_POST ['Randonnee'] )) {
+if (isset ( $_POST ['randonnee'] )) {
 	header ( "Location: Randonnee.php" );
 }
 
