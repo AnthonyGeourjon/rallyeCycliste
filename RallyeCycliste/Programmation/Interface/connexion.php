@@ -5,10 +5,10 @@ require_once "verifConnexion.php";
 
 // Autochargement des classes
 function __autoload($class) {
-	require_once "$class.php";
+	require_once "../Classes/$class.php";
 }
 
-verifConnexion();
+verifConnexion ();
 
 echo '<?xml version="1.0" encoding="UTF-8"?>', "\n";
 ?>

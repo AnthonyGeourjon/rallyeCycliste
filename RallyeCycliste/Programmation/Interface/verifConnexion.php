@@ -6,21 +6,25 @@
 $bd = MaBD::getInstance ();
 
 $utilisateurs = new UtilisateurDAO ( $bd );
+$resultatConnexion = "Echec";
 
 // Vérification login/mdp
 function verifConnexion() {
-	global $utilisateurs;
-	if (isset ( $_POST ["login"] ) && (isset ( $_POST ["motDePasse"] ))) {
+	global $utilisateurs, $resultatConnexion;;
+	if (isset ( $_POST ["mail"] ) && (isset ( $_POST ["motDePasse"] ))) {
 		try {
-			$utilisateurCourant = $utilisateurs->getOne ( $_POST ['login'] );
+			$utilisateurCourant = $utilisateurs->getOneByMail( $_POST ['mail'] );
+			
+		
 			
 			// Soulève l'exception si l'utilisateur n'existe pas
 			if (isset ( $utilisateurCourant ) && $_POST ['motDePasse'] == $utilisateurCourant->motDePasse) {
 				$_SESSION ['utilisateur'] = $utilisateurCourant;
 				
-				// La connexion est ok
-				header ( "Location: pageADefinir.php" );
-				echo "Connexion Ok";
+				$resultatConnexion="Succès";
+				
+				//header ( "Location: pageADefinir.php" ); TODO
+				
 			} 
 
 			else {

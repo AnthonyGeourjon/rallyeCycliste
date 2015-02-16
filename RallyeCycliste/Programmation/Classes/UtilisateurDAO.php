@@ -13,6 +13,15 @@ class UtilisateurDAO extends DAO {
 		return new Utilisateur ( $row );
 	}
 	
+	public function getOneByMail($mail) {
+		$stmt = $this->pdo->prepare ( "SELECT * FROM UTILISATEUR WHERE mail=?" );
+		$stmt->execute ( array (
+				$mail
+		) );
+		$row = $stmt->fetch ( PDO::FETCH_ASSOC );
+		return new Utilisateur ( $row );
+	}
+	
 	// Récupération de toutes les utilisateurs de la table
 	public function getAll() {
 		$res = array ();

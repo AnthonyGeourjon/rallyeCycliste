@@ -37,26 +37,25 @@ $nouveau = new Inscription ( array (
 		'idUtilisateur' => 2 
 ) );
 
-
 echo "$nouveau";
 sl ();
 
 echo "------- Enregistrement ------";
 sl ();
 
-$nouveauDeux=$nouveau;
-$nouveauDeux->nomRandonneur="Richard";
+$nouveauDeux = $nouveau;
+$nouveauDeux->nomRandonneur = "Richard";
 
-var_dump($nouveau);
-sl();
-var_dump($nouveauDeux);
-sl();
+var_dump ( $nouveau );
+sl ();
+var_dump ( $nouveauDeux );
+sl ();
 
 echo "Inscription : ";
 $inscriptions->insert ( $nouveau );
 $inscriptions->insert ( $nouveauDeux );
 
-afficheTout($inscriptions);
+afficheTout ( $inscriptions );
 
 // echo $parcours->getOne(MaBD::getInstance()->lastInsertId() );
 echo "Inscription enregistree.";
@@ -68,7 +67,7 @@ echo "------- Modification de l'inscription numero : ", MaBD::getInstance ()->la
 sl ();
 
 $nouveauModifie = $inscriptions->getOne ( MaBD::getInstance ()->lastInsertId () );
-$nouveauModifie->clubOuVille="ZVal";
+$nouveauModifie->clubOuVille = "ZVal";
 
 $inscriptions->update ( $nouveauModifie );
 
