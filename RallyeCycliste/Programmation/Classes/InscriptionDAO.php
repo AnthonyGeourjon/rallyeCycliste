@@ -24,7 +24,7 @@ class InscriptionDAO extends DAO {
 	
 	// Ajout d'une inscription dans la base
 	public function insert($obj) {
-		$stmt = $this->pdo->prepare ( "INSERT INTO INSCRIPTION (nomRandonneur, prenomRandonneur, sexe, dateNaissance, age, federation, clubOuVille, departement, posteDInscription, idParcours, idUtilisateur) VALUES (:nomRandonneur, :prenomRandonneur, :sexe, :dateNaissance, :age, :federation, :clubOuVille, :departement, :posteDInscription, :idParcours, :idUtilisateur)
+		$stmt = $this->pdo->prepare ( "INSERT INTO INSCRIPTION (nomRandonneur, prenomRandonneur, sexe, dateNaissance, age, federation, clubOuVille, departement, posteDInscription, idParcours, idUtilisateur, estArrive) VALUES (:nomRandonneur, :prenomRandonneur, :sexe, :dateNaissance, :age, :federation, :clubOuVille, :departement, :posteDInscription, :idParcours, :idUtilisateur, 'true')
 				" );
 		// $res = $stmt->execute($obj->getFields()); TODO Tester si cela focntionne
 		$res = $stmt->execute ( array (

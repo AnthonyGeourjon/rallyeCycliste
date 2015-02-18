@@ -1,14 +1,3 @@
-/* --- SCRIPT CRÉATION DES TABLES DU PROJET 2E ANNÉE ---
-   - Auteur : Anthony Geourjon
-   - Date : 02/02/2015
-   - Avancement : Terminé
-
-*/
-
-DROP TABLE IF EXISTS INSCRIPTION ;
-DROP TABLE IF EXISTS UTILISATEUR ;
-DROP TABLE IF EXISTS PARCOURS ;
-
 CREATE TABLE UTILISATEUR (
 idUtilisateur int(11) NOT NULL AUTO_INCREMENT,
 mail VARCHAR (50) UNIQUE,
@@ -39,6 +28,7 @@ PRIMARY KEY (idParcours) ) ENGINE=InnoDB;
 
 CREATE TABLE INSCRIPTION (
 idInscription int(11) NOT NULL AUTO_INCREMENT,
+estArrive BOOLEAN NOT NULL,
 nomRandonneur VARCHAR(30),
 prenomRandonneur VARCHAR(30),
 sexe CHAR(1),
@@ -63,3 +53,6 @@ PRIMARY KEY (idInscription)
 ALTER TABLE INSCRIPTION
   ADD CONSTRAINT inscription_1 FOREIGN KEY (idParcours) REFERENCES PARCOURS (idParcours),
   ADD CONSTRAINT inscription_2 FOREIGN KEY (idUtilisateur) REFERENCES UTILISATEUR (idUtilisateur);
+  
+
+﻿
