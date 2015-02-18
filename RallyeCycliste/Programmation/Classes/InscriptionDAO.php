@@ -69,5 +69,14 @@ class InscriptionDAO extends DAO {
 	private function age($date) {
 		return ( int ) ((time () - strtotime ( $date )) / 3600 / 24 / 365);
 	}
+	
+	public function estArrive ( $num )
+	{
+		$stmt = $this->pdo->prepare ( "UPDATE INSCRIPTION SET estArrive='true' WHERE idInscription=?" );
+		$res = $stmt->execute ( array (
+				$obj->idInscription
+		) );
+		return $res;
+	}
 }
 ?>
