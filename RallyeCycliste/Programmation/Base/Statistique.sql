@@ -12,12 +12,12 @@ Rappel des statistique à fournir (détail sur l'excel RallyeCycliste/Divers/anc
 	-Féminine, non-licencié, licencié Saint-Péray, non licencié Saint-Péray
 	-Répartition sur les parcours
 	-Club le plus nombreux
-	-2 clubs les plus nombreux d'Ardèche
-	-2 clubs les plus nombreux de Drôme
+	-2 clubs les plus nombreux d'Ardèche x
+	-2 clubs les plus nombreux de Drôme x
 	-Le plus éloigné (euh comment on fais ça?)
 	-Le plus de féminine
-	-La plus jeune
-	-Le plus jeune
+	-La plus jeune x
+	-Le plus jeune x 
 
 */
 
@@ -169,6 +169,36 @@ GROUP BY clubOuVille HAVING count(*)=
     	(SELECT COUNT(*) as nbMembre 
          FROM inscription join parcours using(idParcours) 
          WHERE type='ROUTE' AND federation<>'NL' AND departement=26
+         GROUP BY clubOuVille) 
+    I
+);
+
+/*Club ou il y a le plus de fémine route */
+SELECT clubOuVille, COUNT(*) as nombreMembre
+FROM inscription join parcours using(idParcours)
+WHERE type='ROUTE' AND federation<>'NL' AND sexe='F'
+GROUP BY clubOuVille HAVING count(*)=
+(
+    SELECT MAX(nbMembre) 
+    FROM
+    	(SELECT COUNT(*) as nbMembre 
+         FROM inscription join parcours using(idParcours) 
+         WHERE type='ROUTE' AND federation<>'NL' AND sexe='F'
+         GROUP BY clubOuVille) 
+    I
+);
+
+/*Club ou il y a le plus de fémine VTT */
+SELECT clubOuVille, COUNT(*) as nombreMembre
+FROM inscription join parcours using(idParcours)
+WHERE type='VTT' AND federation<>'NL' AND sexe='F'
+GROUP BY clubOuVille HAVING count(*)=
+(
+    SELECT MAX(nbMembre) 
+    FROM
+    	(SELECT COUNT(*) as nbMembre 
+         FROM inscription join parcours using(idParcours) 
+         WHERE type='VTT' AND federation<>'NL' AND sexe='F'
          GROUP BY clubOuVille) 
     I
 );
