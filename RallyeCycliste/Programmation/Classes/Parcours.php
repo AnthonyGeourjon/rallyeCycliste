@@ -9,5 +9,11 @@ class Parcours extends TableObject {
     public function toHTML() {
     	// TODO : À COMPLÉTER
     }
+    
+    
+    public function toSelectDistance(){
+    	echo '<option value="', $this->idParcours,'">', $this->distance,'</option>';
+    }
+    
 }
 ?>

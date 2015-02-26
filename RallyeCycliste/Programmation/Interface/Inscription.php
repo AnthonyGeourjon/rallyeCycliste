@@ -20,9 +20,9 @@ $mesParcoursDAO = new ParcoursDAO($connector);
 function parcoursToForm(){
     global $mesParcoursDAO;
     
-    $listeParcours = $meParcoursDAO->getAll();
+    $listeParcours = $mesParcoursDAO->getAll();
     foreach($listeParcours as $parcours){
-        $parcours->toSelect();
+        $parcours->toSelectDistance();
     }
 
 }
@@ -149,7 +149,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>', "\n";
 					</p>
 			</fieldset>
         </section>
-        </div>s
+        </div>
             	
     </body>
 </html>
