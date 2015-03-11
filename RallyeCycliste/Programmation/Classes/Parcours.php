@@ -12,7 +12,7 @@ class Parcours extends TableObject {
     
     
     public function toSelectDistance(){
-    	echo '<option value="', $this->idParcours,'">', $this->distance,'</option>';
+    	echo '<option name="type_parcours" value="', $this->idParcours,'">', $this->distance,'</option>';
     }
     
 }

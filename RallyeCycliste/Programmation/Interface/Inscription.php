@@ -12,9 +12,20 @@ function __autoload($class) {
 
 verifPage ();
 
+function afficherMessage()
+{
+	if (isset($_POST['message']))
+	{
+		$class = ($_POST['erreur']) ? "erreur" : "message";
+		echo '<p class="'.$class.'">'.$_POST['message'].'</p>';
+	}
+}
+
+
 //connexion à la BD
 $connector = MaBD::getInstance();
 $mesParcoursDAO = new ParcoursDAO($connector);
+$uneInscriptionDAO = new InscriptionDAO($connector);
 
 //fonction pour afficher les parcours disponibles dans une liste déroulante, bug...
 function parcoursToForm(){
@@ -27,6 +38,41 @@ function parcoursToForm(){
 
 }
 echo '<?xml version="1.0" encoding="UTF-8"?>', "\n";
+
+/* ========================================================
+ * 			Le bouton valider ne fonctionne pas
+ * 
+ */
+if (isset($_POST['valider'])){
+	//On vérifie la présence d'un nom et d'un prénom
+	/*if (!empty($_POST['nom']) || !empty($_POST['prénom']))
+	{
+		if (!empty($_POST['age']))
+		{
+			if (!empty($_POST['club']))
+			{
+				if (!empty($_POST['type_parcours']))
+				{*/	
+					$nouvelInscrit = new Inscription(array(
+													'idInscription' => DAO::UNKNOWN_ID,
+													'nomRandonneur'=> $_POST['nom'], 
+													'prenomRandonneur'=> $_POST['prénom'],
+													'sexe'=> $_POST['sexe'],
+													'dateNaissance' => '1995-08-16',
+													'age' => $_POST['age'],
+													'clubOuVille' => $_POST['club'],
+													'federation'=> 'FFCT',
+													'posteDInscription'=>0,
+													'idParcours' => $_POST['type_parcours'],
+													'idUtilisateur' => $_SESSION[$utilisateurs]
+					));
+					$uneInscriptionDAO->insert($nouvelInscrit);
+					$_POST['message'] = $nouvelInscrit->nomRandonneur.' '.$nouvelInscrit->prenomRandonneur.' a bien été ajouté !';
+				}
+			/*}
+		}
+	}
+}*/
 ?>
 
 
@@ -54,6 +100,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>', "\n";
 		<p>
 		<fieldset>
 			<legend>5 dernières inscriptions</legend>
+				<p>
 				<form action="" method="get" action="inscription.php">
 					<input name="Nom" type="text" value="nom" size="20" maxlength="20">
 					<input name="Prenom" type="text" value="prénom" size="20" maxlength="40">
@@ -122,6 +169,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>', "\n";
 					<input name="Copier" type="button" value="Copier">
 					<input name="Modifier" type="button" value="Modifier">
 				</form>
+				</p>
 		
 			</fieldset>
         </p>
@@ -133,21 +181,25 @@ echo '<?xml version="1.0" encoding="UTF-8"?>', "\n";
             <fieldset>
 				<legend>Saisie d'un inscrit</legend>
 					<p>
-						<form action="" method="get">
-						<input name="Nom" type="text" value="nom" size="20" maxlength="20">
-						<input name="Prenom" type="text" value="prénom" size="20" maxlength="40">
-						<input name="Age" type="text" value="age" size="3" maxlength="2">
-						<select name="Sexe">
+						<form action="Inscription.php" method="post">
+						<input name="nom" type="text" value="nom" size="20" maxlength="20">
+						<input name="prénom" type="text" value="prénom" size="20" maxlength="40">
+						<input name="age" type="text" value="age" size="3" maxlength="2">
+						<select name="sexe">
 							<option>Homme</option>
 							<option>Femme</option>
 						</select>
-						<input name="Club" type="text" value="club" size="20" maxlength="40">
+						<input name="club" type="text" value="club" size="20" maxlength="40">
 						<select name="type_parcours">
 							<?php parcoursToForm(); ?>
 						</select>
-						<input name="Valider" type="button" value="Valider">
+						<input name="valider" type="button" value="valider">
+						</form>
 					</p>
 			</fieldset>
+			<p>
+				<?php afficherMessage();?>
+			</p>
         </section>
         </div>
             	
