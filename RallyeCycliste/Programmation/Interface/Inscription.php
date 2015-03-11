@@ -39,10 +39,7 @@ function parcoursToForm(){
 }
 echo '<?xml version="1.0" encoding="UTF-8"?>', "\n";
 
-/* ========================================================
- * 			Le bouton valider ne fonctionne pas
- * 
- */
+
 if (isset($_POST['valider'])){
 	//On vérifie la présence d'un nom et d'un prénom
 	/*if (!empty($_POST['nom']) || !empty($_POST['prénom']))
@@ -54,7 +51,6 @@ if (isset($_POST['valider'])){
 				if (!empty($_POST['type_parcours']))
 				{*/	
 					$nouvelInscrit = new Inscription(array(
-													'idInscription' => DAO::UNKNOWN_ID,
 													'nomRandonneur'=> $_POST['nom'], 
 													'prenomRandonneur'=> $_POST['prénom'],
 													'sexe'=> $_POST['sexe'],
@@ -62,12 +58,13 @@ if (isset($_POST['valider'])){
 													'age' => $_POST['age'],
 													'clubOuVille' => $_POST['club'],
 													'federation'=> 'FFCT',
+													'departement' => 'Vaucluse',
 													'posteDInscription'=>0,
 													'idParcours' => $_POST['type_parcours'],
-													'idUtilisateur' => $_SESSION[$utilisateurs]
+													'idUtilisateur' => $_SESSION['utilisateur']->idUtilisateur
 					));
 					$uneInscriptionDAO->insert($nouvelInscrit);
-					$_POST['message'] = $nouvelInscrit->nomRandonneur.' '.$nouvelInscrit->prenomRandonneur.' a bien été ajouté !';
+					$_POST['message'] = $nouvelInscrit->nomRandonneur.' '.$nouvelInscrit->prenomRandonneur.' a bien été ajouté !' ;
 				}
 			/*}
 		}
@@ -193,7 +190,7 @@ if (isset($_POST['valider'])){
 						<select name="type_parcours">
 							<?php parcoursToForm(); ?>
 						</select>
-						<input name="valider" type="button" value="valider">
+						<input name="valider" type="submit" value="valider"/>
 						</form>
 					</p>
 			</fieldset>
