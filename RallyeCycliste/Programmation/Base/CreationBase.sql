@@ -54,5 +54,14 @@ ALTER TABLE INSCRIPTION
   ADD CONSTRAINT inscription_1 FOREIGN KEY (idParcours) REFERENCES PARCOURS (idParcours),
   ADD CONSTRAINT inscription_2 FOREIGN KEY (idUtilisateur) REFERENCES UTILISATEUR (idUtilisateur);
   
-
+/* Table pour les comparaisons entre année */
 ﻿
+
+CREATE TABLE IF NOT EXISTS `randonnee` (
+  `annee` int(11) NOT NULL,
+  `randoSerialise` text COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+ALTER TABLE `randonnee`
+ ADD PRIMARY KEY (`annee`);
