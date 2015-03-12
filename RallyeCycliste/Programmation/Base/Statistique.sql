@@ -16,8 +16,8 @@ Rappel des statistique à fournir (détail sur l'excel RallyeCycliste/Divers/anc
 	-2 clubs les plus nombreux de Drôme x
 	-Le plus éloigné (euh comment on fais ça?)
 	-Le plus de féminine
-	-La plus jeune x
-	-Le plus jeune x 
+	-La plus jeune 
+	-Le plus jeune  
 
 */
 
@@ -201,4 +201,41 @@ GROUP BY clubOuVille HAVING count(*)=
          WHERE type='VTT' AND federation<>'NL' AND sexe='F'
          GROUP BY clubOuVille) 
     I
+);
+
+
+/*Plus jeune féminine VTT */
+SELECT `nomRandonneur`, `prenomRandonneur`
+FROM `inscription` 
+WHERE dateNaissance = (
+    SELECT MAX(dateNaissance) 
+    FROM `inscription` JOIN parcours USING (idParcours) 
+    WHERE sexe='F' AND type="VTT"
+);
+
+/*Plus jeune féminine ROUTE */
+SELECT `nomRandonneur`, `prenomRandonneur`
+FROM `inscription` 
+WHERE dateNaissance = (
+    SELECT MAX(dateNaissance) 
+    FROM `inscription` JOIN parcours USING (idParcours) 
+    WHERE sexe='F' AND type="ROUTE"
+);
+
+/*Plus jeune homme VTT */
+SELECT `nomRandonneur`, `prenomRandonneur`
+FROM `inscription` 
+WHERE dateNaissance = (
+    SELECT MAX(dateNaissance) 
+    FROM `inscription` JOIN parcours USING (idParcours) 
+    WHERE sexe='H' AND type="VTT"
+);
+
+/*Plus jeune homme ROUTE */
+SELECT `nomRandonneur`, `prenomRandonneur`
+FROM `inscription` 
+WHERE dateNaissance = (
+    SELECT MAX(dateNaissance) 
+    FROM `inscription` JOIN parcours USING (idParcours) 
+    WHERE sexe='H' AND type="ROUTE"
 );
