@@ -12,6 +12,9 @@ function __autoload($class) {
 verifPage ();
 echo '<?xml version="1.0" encoding="UTF-8"?>', "\n";
 
+
+// TODO Retirer le superflu. Il n'y a besoin que de la distance, du type ("ROUTE" ou "VTT"), des boutons "modifier" et "supprimer et le necessaire pour créer un parcours
+// TODO Rajouter des boutons qui permettraient de vider la base, c'est a dire supprimer toutes les insriptions et un autres tout les utilisateurs (a part bénevole et admin)
 ?>
  
 
@@ -34,7 +37,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>', "\n";
         	require_once("enTete.php");
 		?>
 		<section>
-            <h1>Liste des randonnées</h1>
+            <h1>Liste des parcours</h1>
                 
                 <p>
                 <form action="" method="get">
@@ -75,7 +78,7 @@ echo '<?xml version="1.0" encoding="UTF-8"?>', "\n";
         </section>
         
         <section>
-        	<h3>Ajouter une randonnée</h3>
+        	<h3>Ajouter un parcours</h3>
             	<form action="" method="get">
             		<input name="Nom" type="text" value="nom" size="10" maxlength="15">
                     <input name="Date" type="text" value="date" size="8" maxlength="8">

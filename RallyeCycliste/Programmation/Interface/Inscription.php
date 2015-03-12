@@ -2,6 +2,8 @@
 
 session_start ();
 
+//TODO Mise en page, fonctionnement (Taf de Val)
+
 require_once "VerifConnexion.php";
 
 // Autochargement des classes

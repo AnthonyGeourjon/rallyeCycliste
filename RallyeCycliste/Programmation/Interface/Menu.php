@@ -3,6 +3,8 @@ session_start ();
 
 require_once "VerifConnexion.php";
 
+// Mise en page
+
 // Autochargement des classes
 function __autoload($class) {
 	require_once "../Classes/$class.php";
@@ -16,7 +18,7 @@ if (isset ( $_POST ['inscription'] )) {
 	header ( "Location: Inscription.php" );
 }
 if (isset ( $_POST ['preInscription'] )) {
-	header ( "Location: PreInscription.php" );
+	header ( "Location: PreInscriptionLocal.php" );
 }
 if (isset ( $_POST ['validation'] )) {
 	header ( "Location: Validation.php" );

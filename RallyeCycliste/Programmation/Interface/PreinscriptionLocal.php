@@ -2,6 +2,7 @@
 
 session_start ();
 
+// TODO Mise en page et fonctionnement
 require_once "VerifConnexion.php";
 
 // Autochargement des classes
