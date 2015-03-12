@@ -23,7 +23,7 @@ x	-2 clubs les plus nombreux de Drôme
 
 */
 
-/* Nombre participants route */
+/* Nombre participants */
 SELECT COUNT(*) AS nombreParticipantsTotal FROM inscription
 
 /* Nombre participants VTT */
@@ -80,10 +80,10 @@ SELECT COUNT(*) AS nombreNonlicencieRouteSTPeray FROM inscription JOIN parcours 
 SELECT COUNT(*) AS nombreNonlicencieRouteSTPeray FROM inscription JOIN parcours USING(idParcours) WHERE type='ROUTE' AND clubOuVille='CCSTPERAY';
 
 /* Répartition VTT */
-SELECT COUNT(*) AS nombreParticipant distance FROM inscription JOIN parcours USING(idParcours) WHERE type='VTT' GROUP BY distance
+SELECT distance, COUNT(*) AS nombreParticipant FROM inscription JOIN parcours USING(idParcours) WHERE type='VTT' GROUP BY distance
 
 /* Répartition Route */
-SELECT COUNT(*) AS nombreParticipant, distance FROM inscription JOIN parcours USING(idParcours) WHERE type='ROUTE' GROUP BY distance
+SELECT distance, COUNT(*) AS nombreParticipant FROM inscription JOIN parcours USING(idParcours) WHERE type='ROUTE' GROUP BY distance
 
 /* Club le plus nombreux VTT */
 SELECT clubOuVille, COUNT(*) as nombreMembre
@@ -246,62 +246,3 @@ WHERE dateNaissance = (
 
 
 
-/* Club le plus nombreux d'ardeche VTT */
-SELECT clubOuVille, COUNT(*) as nombreMembre
-FROM inscription join parcours using(idParcours)
-WHERE type='VTT' AND federation<>'NL' AND departement=7
-GROUP BY clubOuVille HAVING count(*)=
-(
-    SELECT MAX(nbMembre) 
-    FROM
-    	(SELECT COUNT(*) as nbMembre 
-         FROM inscription join parcours using(idParcours) 
-         WHERE type='VTT' AND federation<>'NL' AND departement=7
-         GROUP BY clubOuVille) 
-    I
-);
-
-/* Club le plus nombreux d'ardeche ROUTE */
-SELECT clubOuVille, COUNT(*) as nombreMembre
-FROM inscription join parcours using(idParcours)
-WHERE type='ROUTE' AND federation<>'NL' AND departement=7
-GROUP BY clubOuVille HAVING count(*)=
-(
-    SELECT MAX(nbMembre) 
-    FROM
-    	(SELECT COUNT(*) as nbMembre 
-         FROM inscription join parcours using(idParcours) 
-         WHERE type='ROUTE' AND federation<>'NL' AND departement=7
-         GROUP BY clubOuVille) 
-    I
-);
-
-/* Club le plus nombreux de drome VTT */
-SELECT clubOuVille, COUNT(*) as nombreMembre
-FROM inscription join parcours using(idParcours)
-WHERE type='VTT' AND federation<>'NL' AND departement=26
-GROUP BY clubOuVille HAVING count(*)=
-(
-    SELECT MAX(nbMembre) 
-    FROM
-    	(SELECT COUNT(*) as nbMembre 
-         FROM inscription join parcours using(idParcours) 
-         WHERE type='VTT' AND federation<>'NL' AND departement=26
-         GROUP BY clubOuVille) 
-    I
-);
-
-/* Club le plus nombreux de drome ROUTE */
-SELECT clubOuVille, COUNT(*) as nombreMembre
-FROM inscription join parcours using(idParcours)
-WHERE type='ROUTE' AND federation<>'NL' AND departement=26
-GROUP BY clubOuVille HAVING count(*)=
-(
-    SELECT MAX(nbMembre) 
-    FROM
-    	(SELECT COUNT(*) as nbMembre 
-         FROM inscription join parcours using(idParcours) 
-         WHERE type='ROUTE' AND federation<>'NL' AND departement=26
-         GROUP BY clubOuVille) 
-    I
-);

@@ -1,5 +1,5 @@
 J'ai eu une petite idée qui est plutot simple et qu'on a pas mis dans le CdC. 
-Ca serait qu'on sauvegarde les stats des randonnée des année précédente 
+Ca serait qu'on sauvegarde les stats des randonnée des années précédentes
 et qu'on puisse faire des comparaisons entre années.
 
 Concretement voila comment je pense réaliser cette fonctionnalité :
@@ -14,7 +14,7 @@ Lorsque on a terminée la randonnée
 -Serializer l'objet (c'est à dire en avoir une répresentation textuelle) depuis le menu randonnee (http://php.net/manual/fr/language.oop5.serialization.php)
 -Stocker le texte dans la base
 
-Ce qui est pratique avec cette fonction c'est qu'elle est tres indépendante, ce qui sera pratique pour travailler a plusieurs.
+Ce qui est pratique avec cette fonction c'est qu'elle est tres indépendante, ce qui sera pratique pour travailler a plusieurs. De plus, ca servira pour pouvoir exploiter les stats et les manipuler
 
 
 
