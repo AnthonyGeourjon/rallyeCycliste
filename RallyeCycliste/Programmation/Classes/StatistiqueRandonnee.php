@@ -36,19 +36,18 @@ class StatistiqueRandonnee extends TableObject {
 	private $plusJeuneGarconRoutier;
 	private $plusJeuneFilleRoutiere;
 	
-	public function __construct($f) {
+	public function __construct() {
 		//TODO Remplir toutes les variables avec les requetes appropriées 
+		$bd = MaBD::getInstance ();
+		$stats = new StatistiqueRandonneeDAO($bd);
+		
+		
 	}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+	public function serialise()
+	{
+		return serialize($this);
+	}
 	
 	// Redéfinition de __tostring pour affichage simplifié
 	public function __tostring() {
