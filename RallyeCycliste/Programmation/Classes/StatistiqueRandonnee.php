@@ -1,6 +1,6 @@
 <?php
-class StatistiqueRandonnee extends TableObject {
-	
+class StatistiqueRandonnee 
+{	
 	private $nombreParticipantsTotal;
 	private $nombreParticipantesTotal;
 	private $nombreNonLicencieTotal;
@@ -36,18 +36,32 @@ class StatistiqueRandonnee extends TableObject {
 	private $plusJeuneGarconRoutier;
 	private $plusJeuneFilleRoutiere;
 	
-	public function __construct() {
+	private $annee;
+	private $objetSerialise;
+	
+	public function __construct($annee) {
 		//TODO Remplir toutes les variables avec les requetes appropriées 
 		$bd = MaBD::getInstance ();
 		$stats = new StatistiqueRandonneeDAO($bd);
 		
+		$this->annee=$annee;
+		$this->objetSerialise=serialize($this);
+		
+		
+		
 		
 	}
 	
-	public function serialise()
+	public function getAnnee()
 	{
-		return serialize($this);
+	    return $this->annee;
 	}
+	
+	public function getObjetSerialise()
+	{
+		return $this->objetSerialise;
+	}
+	
 	
 	// Redéfinition de __tostring pour affichage simplifié
 	public function __tostring() {

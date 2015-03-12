@@ -27,8 +27,8 @@ class StatistiqueRandonneeDAO extends DAO {
 		$stmt = $this->pdo->prepare ( "INSERT INTO RANDONNEE (annee, randoSerialise) VALUES (:annee, :randoSerialise)" );
 		// $res = $stmt->execute($obj->getFields()); TODO Tester si cela focntionne
 		$res = $stmt->execute ( array (
-				':annee' => $obj->getFields ()['annee'],
-				':randoSerialise' => $obj->getFields ()['randoSerialise'] 
+				':annee' => $obj->getAnnee(),
+				':randoSerialise' => $obj->getObjetSerialise()
 		) );
 		return $res;
 	}
@@ -37,14 +37,18 @@ class StatistiqueRandonneeDAO extends DAO {
 	public function update($obj) {
 	    $stmt = $this->pdo->prepare("UPDATE UTILISATEUR SET randoSerialise=:randoSerialise WHERE annee=:annee");
 	    //$res = $stmt->execute($obj->getFields());
-	    $res = $stmt->execute(array(':annee' => $obj->getFields()['annee'],':randoSerialise' => $obj->getFields()['randoSerialise']));
-	    return $res;
+	   $res = $stmt->execute ( array (
+				':annee' => $obj->getAnnee(),
+				':randoSerialise' => $obj->getObjetSerialise() 
+		) );
+	   return $res;
 	}
 	
 	// Effacement d'un utilisateur
 	public function delete($obj) {
 		$stmt = $this->pdo->prepare("DELETE FROM RANDONNEE WHERE annee=?");
-		$res = $stmt->execute(array($obj->annee));
+		$res = $stmt->execute ( array (
+				':annee' => $obj->getAnnee()	) );
 		return $res;
 	}
 	
