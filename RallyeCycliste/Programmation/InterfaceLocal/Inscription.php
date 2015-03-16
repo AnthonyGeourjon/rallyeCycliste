@@ -44,34 +44,32 @@ echo '<?xml version="1.0" encoding="UTF-8"?>', "\n";
 
 if (isset($_POST['valider'])){
 	//On vérifie la présence d'un nom et d'un prénom
-	/*if (!empty($_POST['nom']) || !empty($_POST['prénom']))
+	if (!empty($_POST['nom']) || !empty($_POST['prénom']))
 	{
-		if (!empty($_POST['age']))
+		if (!empty($_POST['club']))
 		{
-			if (!empty($_POST['club']))
+			if (!empty($_POST['type_parcours']))
 			{
-				if (!empty($_POST['type_parcours']))
-				{*/	
-					$nouvelInscrit = new Inscription(array(
-													'nomRandonneur'=> $_POST['nom'], 
-													'prenomRandonneur'=> $_POST['prénom'],
-													'sexe'=> $_POST['sexe'],
-													'dateNaissance' => '1995-08-16',
-													'age' => $_POST['age'],
-													'clubOuVille' => $_POST['club'],
-													'federation'=> 'FFCT',
-													'departement' => 'Vaucluse',
-													'posteDInscription'=>0,
-													'idParcours' => $_POST['type_parcours'],
-													'idUtilisateur' => $_SESSION['utilisateur']->idUtilisateur
-					));
-					$uneInscriptionDAO->insert($nouvelInscrit);
-					$_POST['message'] = $nouvelInscrit->nomRandonneur.' '.$nouvelInscrit->prenomRandonneur.' a bien été ajouté !' ;
-				}
-			/*}
+				$ageInscrit = $uneInscriptionDAO->age($_POST['dateNaissance']);
+				$nouvelInscrit = new Inscription(array(
+												'nomRandonneur'=> $_POST['nom'], 
+												'prenomRandonneur'=> $_POST['prénom'],
+												'sexe'=> $_POST['sexe'],
+												'dateNaissance' => $_POST['dateNaissance'],
+												'age' => $ageInscrit,
+												'clubOuVille' => $_POST['club'],
+												'federation'=> $_POST['federation'],
+												'departement' => $_POST['departement'],
+												'posteDInscription'=>0,
+												'idParcours' => $_POST['type_parcours'],
+												'idUtilisateur' => $_SESSION['utilisateur']->idUtilisateur
+				));
+				$uneInscriptionDAO->insert($nouvelInscrit);
+				$_POST['message'] = $nouvelInscrit->nomRandonneur.' '.$nouvelInscrit->prenomRandonneur.' a bien été ajouté !' ;
+			}
 		}
 	}
-}*/
+}
 ?>
 
 
@@ -183,12 +181,20 @@ if (isset($_POST['valider'])){
 						<form action="Inscription.php" method="post">
 						<input name="nom" type="text" value="nom" size="20" maxlength="20">
 						<input name="prénom" type="text" value="prénom" size="20" maxlength="40">
-						<input name="age" type="text" value="age" size="3" maxlength="2">
 						<select name="sexe">
-							<option>Homme</option>
-							<option>Femme</option>
+							<option value="H">Homme</option>
+							<option value="F">Femme</option>
 						</select>
+						<input name="dateNaissance" type="date" value="dateNaissance">
 						<input name="club" type="text" value="club" size="20" maxlength="40">
+						<select name="federation">
+							<option value="FFC">FFC</option>
+							<option value="FFCT">FFCT</option>
+							<option value="UFOLEP">Ufolep</option>
+							<option value="FSGT">FSGT</option>
+							<option Value="NL">Non licencié</option>
+						</select>
+						<input name="departement" type="text" value="departement" size="20" maxlength="20">
 						<select name="type_parcours">
 							<?php parcoursToForm(); ?>
 						</select>

@@ -66,7 +66,7 @@ class InscriptionDAO extends DAO {
 	}
 	
 	// Fonction triviale pour l'age, le problème des années bisextile n'est pas traité mais on n'a pas besoin de cette précision
-	private function age($date) {
+	public function age($date) {
 		return ( int ) ((time () - strtotime ( $date )) / 3600 / 24 / 365);
 	}
 	
