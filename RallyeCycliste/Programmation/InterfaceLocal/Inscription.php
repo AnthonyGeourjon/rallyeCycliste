@@ -179,14 +179,14 @@ if (isset($_POST['valider'])){
 				<legend>Saisie d'un inscrit</legend>
 					<p>
 						<form action="Inscription.php" method="post">
-						<input name="nom" type="text" value="nom" size="20" maxlength="20">
-						<input name="prénom" type="text" value="prénom" size="20" maxlength="40">
+						<input name="nom" type="text" size="20" maxlength="20" placeholder="nom" autofocus>
+						<input name="prénom" type="text" size="20" maxlength="40" placeholder="prénom">
 						<select name="sexe">
 							<option value="H">Homme</option>
 							<option value="F">Femme</option>
 						</select>
 						<input name="dateNaissance" type="date" value="dateNaissance">
-						<input name="club" type="text" value="club" size="20" maxlength="40">
+						<input name="club" type="text" value="club" size="20" maxlength="40" placeholder="Club ou ville">
 						<select name="federation">
 							<option value="FFC">FFC</option>
 							<option value="FFCT">FFCT</option>
@@ -194,7 +194,7 @@ if (isset($_POST['valider'])){
 							<option value="FSGT">FSGT</option>
 							<option Value="NL">Non licencié</option>
 						</select>
-						<input name="departement" type="text" value="departement" size="20" maxlength="20">
+						<input name="departement" type="text" value="departement" size="20" maxlength="20" placeholder="département">
 						<select name="type_parcours">
 							<?php parcoursToForm(); ?>
 						</select>
