@@ -97,77 +97,7 @@ if (isset($_POST['valider'])){
 		<p>
 		<fieldset>
 			<legend>5 dernières inscriptions</legend>
-				<p>
-				<form action="" method="get" action="inscription.php">
-					<input name="Nom" type="text" value="nom" size="20" maxlength="20">
-					<input name="Prenom" type="text" value="prénom" size="20" maxlength="40">
-					<input name="Age" type="text" value="age" size="3" maxlength="2">
-					<input name="Sexe" type="text" value="sexe" size="5" maxlength="5">
-					<input name="Club" type="text" value="club" size="20" maxlength="40">
-					<input name="type_parcours" type="text" value="VTT" size="5" maxlength="5">
-					<input name="Distance" type="text" value="dst" size="3" maxlength="3">
-					<input name="Supprimer" type="button" value="Supprimer">
-					<input name="Copier" type="button" value="Copier">
-					<input name="Modifier" type="button" value="Modifier">
-				</form>
-				</p>
-				<p>
-				<form action="" method="get">
-					<input name="Nom" type="text" value="nom" size="20" maxlength="20">
-					<input name="Prenom" type="text" value="prénom" size="20" maxlength="40">
-					<input name="Age" type="text" value="age" size="3" maxlength="2">
-					<input name="Sexe" type="text" value="sexe" size="5" maxlength="5">
-					<input name="Club" type="text" value="club" size="20" maxlength="40">
-					<input name="type_parcours" type="text" value="VTT" size="5" maxlength="5">
-					<input name="Distance" type="text" value="dst" size="3" maxlength="3">
-					<input name="Supprimer" type="button" value="Supprimer">
-					<input name="Copier" type="button" value="Copier">
-					<input name="Modifier" type="button" value="Modifier">
-				</form>
-				</p>
-				<p>
-				<form action="" method="get">
-					<input name="Nom" type="text" value="nom" size="20" maxlength="20">
-					<input name="Prenom" type="text" value="prénom" size="20" maxlength="40">
-					<input name="Age" type="text" value="age" size="3" maxlength="2">
-					<input name="Sexe" type="text" value="sexe" size="5" maxlength="5">
-					<input name="Club" type="text" value="club" size="20" maxlength="40">
-					<input name="type_parcours" type="text" value="route" size="5" maxlength="5">
-					<input name="Distance" type="text" value="dst" size="3" maxlength="3">
-					<input name="Supprimer" type="button" value="Supprimer">
-					<input name="Copier" type="button" value="Copier">
-					<input name="Modifier" type="button" value="Modifier">
-				</form>
-				</p>
-				<p>
-				<form action="" method="get">
-					<input name="Nom" type="text" value="nom" size="20" maxlength="20">
-					<input name="Prenom" type="text" value="prénom" size="20" maxlength="40">
-					<input name="Age" type="text" value="age" size="3" maxlength="2">
-					<input name="Sexe" type="text" value="sexe" size="5" maxlength="5">
-					<input name="Club" type="text" value="club" size="20" maxlength="40">
-					<input name="type_parcours" type="text" value="VTT" size="5" maxlength="5">
-					<input name="Distance" type="text" value="dst" size="3" maxlength="3">
-					<input name="Supprimer" type="button" value="Supprimer">
-					<input name="Copier" type="button" value="Copier">
-					<input name="Modifier" type="button" value="Modifier">
-				</form>
-				</p>
-				<p>
-				<form action="" method="get">
-					<input name="Nom" type="text" value="nom" size="20" maxlength="20">
-					<input name="Prenom" type="text" value="prénom" size="20" maxlength="40">
-					<input name="Age" type="text" value="age" size="3" maxlength="2">
-					<input name="Sexe" type="text" value="sexe" size="5" maxlength="5">
-					<input name="Club" type="text" value="club" size="20" maxlength="40">
-					<input name="type_parcours" type="text" value="route" size="5" maxlength="5">
-					<input name="Distance" type="text" value="dst" size="3" maxlength="3">
-					<input name="Supprimer" type="button" value="Supprimer">
-					<input name="Copier" type="button" value="Copier">
-					<input name="Modifier" type="button" value="Modifier">
-				</form>
-				</p>
-		
+				
 			</fieldset>
         </p>
         </section>
@@ -186,7 +116,7 @@ if (isset($_POST['valider'])){
 							<option value="F">Femme</option>
 						</select>
 						<input name="dateNaissance" type="date" value="dateNaissance">
-						<input name="club" type="text" value="club" size="20" maxlength="40" placeholder="Club ou ville">
+						<input name="club" type="text" size="20" maxlength="40" placeholder="Club ou ville">
 						<select name="federation">
 							<option value="FFC">FFC</option>
 							<option value="FFCT">FFCT</option>
@@ -194,7 +124,7 @@ if (isset($_POST['valider'])){
 							<option value="FSGT">FSGT</option>
 							<option Value="NL">Non licencié</option>
 						</select>
-						<input name="departement" type="text" value="departement" size="20" maxlength="20" placeholder="département">
+						<input name="departement" type="text" size="20" maxlength="20" placeholder="département">
 						<select name="type_parcours">
 							<?php parcoursToForm(); ?>
 						</select>
