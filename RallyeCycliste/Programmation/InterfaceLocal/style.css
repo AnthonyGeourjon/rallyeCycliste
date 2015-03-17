@@ -1,0 +1,8 @@
+
+table > tbody > tr:last-child{
+	display: none ;
+}
+
+tr {
+	display: table-row;
+}

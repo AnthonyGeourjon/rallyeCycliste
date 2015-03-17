@@ -80,6 +80,7 @@ if (isset($_POST['valider'])){
         <?php
         	require_once("head.php");
 		?>
+		<script type="text/javascript" src="Inscription.js"></script>
 		<title>Page d'inscription</title>
 
 	</head>
@@ -94,12 +95,23 @@ if (isset($_POST['valider'])){
         
         <section>
         	<h1>Gestion des inscriptions</h1>
-		<p>
-		<fieldset>
-			<legend>5 dernières inscriptions</legend>
-				
-			</fieldset>
-        </p>
+        		
+        		<form id="AffichageDerniersInscrits" action="" method="post">
+        			<table>
+        				<thead>
+        					<tr>
+        						<th>Nom</th><th>Prénom</th><th>Sexe</th><th>Date de Naissance</th><th>Club ou ville</th><th>Fédération</th><th>Département</th><th>Parcours</th>
+        					</tr>
+        				</thead>
+        				<tbody>
+        					<tr>
+        						<td>Nom</td><td>Prénom</td><td>Sexe</td><td>Date de Naissance</td><td>Club ou ville</td><td>Fédérattion</td><td>Département</td><td>Parcours</td>
+        					</tr>
+        				</tbody>
+        						
+        			</table>
+        		</form>
+		
         </section>
         
         <section style="margin-top: 50px;">
@@ -107,7 +119,6 @@ if (isset($_POST['valider'])){
 			
             <fieldset>
 				<legend>Saisie d'un inscrit</legend>
-					<p>
 						<form action="Inscription.php" method="post">
 						<input name="nom" type="text" size="20" maxlength="20" placeholder="nom" autofocus>
 						<input name="prénom" type="text" size="20" maxlength="40" placeholder="prénom">
@@ -130,7 +141,6 @@ if (isset($_POST['valider'])){
 						</select>
 						<input name="valider" type="submit" value="valider"/>
 						</form>
-					</p>
 			</fieldset>
 			<p>
 				<?php afficherMessage();?>

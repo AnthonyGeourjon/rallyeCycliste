@@ -18,11 +18,12 @@ class InscriptionDAO extends DAO {
 	public function getLastFive($idSession) {
 		$res = array();
 		$stmt = $this->pdo->prepare ( "SELECT * FROM INSCRIPTION WHERE idUtilisateur=? ORDER BY idInscription DESC LIMIT 5 " );
-		if ($stmt->execute(array(1))){
+		if ($stmt->execute(array($idSession))){
 			while ($row = $stmt->fetch()){
-				print_r($row);
+				$res[] = new Inscription($row);
 			}
 		}
+		return  $res;
 	}
 	
 	// Récupération de toutes les inscriptions de la table
