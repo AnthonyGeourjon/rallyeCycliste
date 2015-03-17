@@ -13,16 +13,16 @@ class InscriptionDAO extends DAO {
 		return new Inscription ( $row );
 	}
 	
-	// TODO regarder comment un on peut faire une requete préparé tout en mettant le resultat dans le tableau
+	// TODO Presque fonctionnelle, voir pour l'affichage
 	//Cette fonction doit permettre de récupérer les 5 derniers inscrits depuis le même utilisateur
 	public function getLastFive($idSession) {
 		$res = array();
 		$stmt = $this->pdo->prepare ( "SELECT * FROM INSCRIPTION WHERE idUtilisateur=? ORDER BY idInscription DESC LIMIT 5 " );
-		$stmt->execute ( array (
-				
-		) );
-		$row = $stmt->fetch ( PDO::FETCH_ASSOC );
-		return new Inscription ( $row );
+		if ($stmt->execute(array(1))){
+			while ($row = $stmt->fetch()){
+				print_r($row);
+			}
+		}
 	}
 	
 	// Récupération de toutes les inscriptions de la table
